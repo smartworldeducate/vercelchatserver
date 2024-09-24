@@ -7,11 +7,12 @@ class user_controller extends user_module {
         try {
             console.log("controller response",req.body)
             let response = await this.save_user_details(req)
+            console.log("response===",response)
             let message = 'Success';
             res.send({
                 sucess: true,
                 message: message,
-                data: response
+                data: response.data
             })
         } catch (error) {
             let status_code = error.status.code != undefined ? error.status_code: 500;
