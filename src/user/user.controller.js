@@ -29,21 +29,24 @@ class user_controller extends user_module {
         try {
             console.log("controller response",req.body)
             let response = await this.reterive_user(req)
+            // console.log("response==",response);
             let message = 'Success';
+            // return response;
             res.send({
                 sucess: true,
                 message: message,
                 data: response
             })
         } catch (error) {
-            let status_code = error.status.code != undefined ? error.status_code: 500;
-            let type = error.type != undefined ? err.type: 'Bad Request';
-            let message = err.custom_msg != undefined ? error.custom_msg: "Something went wrong"
-            res.status(status_code).send({
-                sucess: false,
-                error:type,
-                message: message
-            })
+            throw error
+            // let status_code = error.status.code != undefined ? error.status_code: 500;
+            // let type = error.type != undefined ? err.type: 'Bad Request';
+            // let message = err.custom_msg != undefined ? error.custom_msg: "Something went wrong"
+            // res.status(res).send({
+            //     sucess: false,
+            //     error:"error",
+            //     message: "bad request"
+            // })
         }
     }
 

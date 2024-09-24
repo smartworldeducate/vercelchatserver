@@ -19,19 +19,19 @@ class user_module {
 
     static reterive_user = async (req) => {
         try {
-            let {limit, pagination} = req.query
+            // let {limit, pagination} = req.query
 
-            let query = {}
-            let projection ={__v: 0}
-            let options = {
-                lean: true,
-                sort: {_id: -1},
-                skip: !Number(pagination) ? 0: Number(pagination) * !Number(limit) ? 10: Number(limit),
-                limit: !Number(limit) ? 10: Number(limit)
-            }
-            let users = await models.users.find(query, projection, options)
-            let count = await models.users.count(query)
-            return {users, count}
+            // let query = {}
+            // let projection ={__v: 0}
+            // let options = {
+            //     lean: true,
+            //     sort: {_id: -1},
+            //     skip: !Number(pagination) ? 0: Number(pagination) * !Number(limit) ? 10: Number(limit),
+            //     limit: !Number(limit) ? 10: Number(limit)
+            // }
+            let users = await models.users.find()
+            // let count = await models.users.count()
+            return users
         } catch (error) {
             throw error
         }
